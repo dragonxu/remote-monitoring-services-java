@@ -12,7 +12,7 @@ libraryDependencies ++= {
     ws,
 
     // https://github.com/Azure/azure-iot-sdk-java/releases
-    "com.microsoft.azure.sdk.iot" % "iot-service-client" % "1.15.0",
+    "com.microsoft.azure.sdk.iot" % "iot-service-client" % "1.15.1",
 
     // https://mvnrepository.com/artifact/com.nimbusds/oauth2-oidc-sdk
     "com.nimbusds" % "oauth2-oidc-sdk" % "5.36",
@@ -82,7 +82,7 @@ PlayKeys.playDefaultPort := 9002
 // Docker
 // Note: use lowercase name for the Docker image details
 enablePlugins(JavaAppPackaging)
-dockerRepository := Some("azureiotpcs")
+dockerRepository := Some("elvinmorales86")
 dockerAlias := DockerAlias(dockerRepository.value, None, packageName.value + "-java", Some((version in Docker).value))
 maintainer in Docker := "Devis Lucato (https://github.com/dluc)"
 dockerBaseImage := "toketi/openjdk-8-jre-alpine-bash"
