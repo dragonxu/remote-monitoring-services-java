@@ -84,7 +84,7 @@ PlayKeys.playDefaultPort := 9005
 // Docker
 // Note: use lowercase name for the Docker image details
 enablePlugins(JavaAppPackaging)
-dockerRepository := Some("azureiotpcs")
+dockerRepository := Some("elvinmorales86")
 dockerAlias := DockerAlias(dockerRepository.value, None, packageName.value + "-java", Some((version in Docker).value))
 maintainer in Docker := "Devis Lucato (https://github.com/dluc)"
 dockerBaseImage := "toketi/openjdk-8-jre-alpine-bash"
