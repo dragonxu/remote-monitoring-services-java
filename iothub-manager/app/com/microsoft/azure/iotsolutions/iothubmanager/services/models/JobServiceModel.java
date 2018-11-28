@@ -60,7 +60,7 @@ public class JobServiceModel {
     }
 
     public String getJobId() {
-        return jobId;
+        return this.jobId;
     }
 
     public void setJobId(String jobId) {
@@ -68,7 +68,7 @@ public class JobServiceModel {
     }
 
     public String getQueryCondition() {
-        return queryCondition;
+        return this.queryCondition;
     }
 
     public void setQueryCondition(String queryCondition) {
@@ -76,7 +76,7 @@ public class JobServiceModel {
     }
 
     public Date getCreatedTimeUtc() {
-        return createdTimeUtc;
+        return this.createdTimeUtc;
     }
 
     public void setCreatedTimeUtc(Date createdTimeUtc) {
@@ -84,7 +84,7 @@ public class JobServiceModel {
     }
 
     public Date getStartTimeUtc() {
-        return startTimeUtc;
+        return this.startTimeUtc;
     }
 
     public void setStartTimeUtc(Date startTimeUtc) {
@@ -92,7 +92,12 @@ public class JobServiceModel {
     }
 
     public Date getEndTimeUtc() {
-        return endTimeUtc;
+        // IoT Hub will return a date of 12/30/9999 if job hasn't completed yet.
+        // Return end time only if job is complete.
+        if (this.jobStatus == JobStatus.completed) {
+            return this.endTimeUtc;
+        }
+        return null;
     }
 
     public void setEndTimeUtc(Date endTimeUtc) {
@@ -100,7 +105,7 @@ public class JobServiceModel {
     }
 
     public Long getMaxExecutionTimeInSeconds() {
-        return maxExecutionTimeInSeconds;
+        return this.maxExecutionTimeInSeconds;
     }
 
     public void setMaxExecutionTimeInSeconds(Long maxExecutionTimeInSeconds) {
@@ -108,7 +113,7 @@ public class JobServiceModel {
     }
 
     public JobType getJobType() {
-        return jobType;
+        return this.jobType;
     }
 
     public void setJobType(JobType jobType) {
@@ -116,7 +121,7 @@ public class JobServiceModel {
     }
 
     public JobStatus getJobStatus() {
-        return jobStatus;
+        return this.jobStatus;
     }
 
     public void setJobStatus(JobStatus jobStatus) {
@@ -140,7 +145,7 @@ public class JobServiceModel {
     }
 
     public String getFailureReason() {
-        return failureReason;
+        return this.failureReason;
     }
 
     public void setFailureReason(String failureReason) {
@@ -148,7 +153,7 @@ public class JobServiceModel {
     }
 
     public String getStatusMessage() {
-        return statusMessage;
+        return this.statusMessage;
     }
 
     public void setStatusMessage(String statusMessage) {
@@ -156,7 +161,7 @@ public class JobServiceModel {
     }
 
     public JobStatistics getResultStatistics() {
-        return resultStatistics;
+        return this.resultStatistics;
     }
 
     public void setResultStatistics(JobStatistics resultStatistics) {
@@ -164,6 +169,6 @@ public class JobServiceModel {
     }
 
     public List<DeviceJobServiceModel> getDevices() {
-        return devices;
+        return this.devices;
     }
 }
